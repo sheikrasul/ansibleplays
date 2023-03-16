@@ -1,0 +1,10 @@
+- name: create user and groups
+  hosts: all
+  tasks:
+    - name: create the groups
+      group:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - supers2
+        - developers2

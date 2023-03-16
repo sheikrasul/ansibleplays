@@ -1,0 +1,6 @@
+- hosts: all
+  tasks:
+  - get_url:
+       url: https://rpmfind.net/linux/opensuse/distribution/leap/15.5/repo/oss/x86_64/vsftpd-3.0.5-150400.3.6.1.x86_64.rpm
+       dest: /opt/tomcat8
+       mode: 0755

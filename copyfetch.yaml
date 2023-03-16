@@ -1,0 +1,47 @@
+- name: Testing ansible copy and fetch modules
+  hosts: all
+  become: true
+  tasks:
+  - name: EXAMPLE 1 Copy file with owner and permissions
+    copy:
+      src: /home/devops/hostinfo.txt
+      dest: /etc/hostinfo.txt
+      owner: ansible
+      group: ansible
+      mode: '0677'
+    tags: copytest1
+  - name: EXAMPLE 2 Copy file locally within server preserving permissions
+    copy:
+      src: /etc/hostinfo.txt
+      dest: /tmp/hostinfo.txt
+      owner: nrpe
+      group: nrpe
+      mode: preserve
+      remote_src: true
+    tags: copytest2
+  - name: EXAMPLE 3 Copying a new content over /etc/hostinfo, backing up the original content
+    copy:
+      src: /home/devops/hostinfo_updated.txt
+      dest: /etc/hostinfo.txt
+      owner: root
+      group: root
+      mode: '0644'
+      backup: yes
+    tags: copytest3
+  - name: EXAMPLE 4 Fetching file from clients into destination directory
+    fetch:
+      src: /etc/fstab
+      dest: /home/devops
+    tags: fetchtest1
+  - name: EXAMPLE 5 Store file into destination directory without default behavior
+    fetch:
+      src: /etc/fstab
+      dest: /home/devops/Finalresults
+      flat: yes
+    tags: fetchtest2
+  - name: EXAMPLE 6 Store file into destination directory of server names
+    fetch:
+      src: /etc/fstab
+      dest: "/home/devops/results/{{ inventory_hostname }}-fstab.txt"
+      flat: yes
+    tags: fetchtest3

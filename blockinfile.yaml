@@ -1,0 +1,9 @@
+- hosts: all
+  tasks:
+  - blockinfile:
+       path: /etc/ssh/sshd_config
+       block: |
+         Match User kumar
+         PasswordAuthentication no
+       backup: yes
+       validate: /usr/sbin/sshd -T -f %s

@@ -1,0 +1,8 @@
+- hosts: all
+  gather_facts: no
+  tasks:
+  - package:
+      name: "vsftpd"
+      state: "present"
+  - pause:
+      minutes: 1

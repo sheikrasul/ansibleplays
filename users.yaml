@@ -1,0 +1,20 @@
+- name: create user and groups
+  hosts: all
+  vars:
+    user: rama1
+    new_groups: supers,developers
+  tasks:
+    - name: create the groups
+      group:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - supers
+        - developers
+
+   - name: add user {{ user }}
+     user:
+       name: "{{ user }}"
+       groups: "{{ new_groups }}"
+       append: yes
+

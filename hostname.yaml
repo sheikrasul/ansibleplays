@@ -1,0 +1,7 @@
+- name: set hostname
+  hosts: all
+  tasks:
+  - hostname:
+      name: targetnode1
+  - shell: "hostnamectl set-hostname targetnode1"
+  - command: "hostnamectl set-hostname targetnode1"
