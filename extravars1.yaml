@@ -10,6 +10,6 @@
       state: present
   - name: install haproxy package
     package: 
-      name: "{{ package3 }}
+      name: "{{ package3 }}"
       state: present
      
