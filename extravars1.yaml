@@ -1,4 +1,4 @@
-- hosts: prodgroup
+- hosts: dev
   tasks:
   - name: install httpd package
     package:
