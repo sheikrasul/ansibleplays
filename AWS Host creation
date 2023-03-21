@@ -1,0 +1,13 @@
+- hosts: localhost
+  tasks:
+  - amazon.aws.ec2_instance:
+      name: "myinstance"
+	  image_id: "ami-006dcf34c09e50022" 
+	  vpc_subnet_id: "subnet-0401ef6b651415925"
+	  instance_type: "t2.micro"
+	  key_name: awskey
+	  count: 1
+	  region: "us-east-1"
+	  state: present
+	  accesskey: ""
+	  secretkey: ""
